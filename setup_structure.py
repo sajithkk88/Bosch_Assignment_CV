@@ -56,6 +56,6 @@ def create_structure(base_path, structure):
             open(path, 'w').close()
             print(f"Created file: {path}")
 
-# Set the base directory to the script's directory
-base_directory = os.path.join(os.path.dirname(os.path.abspath(__file__)), "project_root")
+# Set the base directory to the script's current directory
+base_directory = os.getcwd()
 create_structure(base_directory, FOLDER_STRUCTURE)
