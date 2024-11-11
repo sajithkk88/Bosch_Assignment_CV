@@ -1,3 +1,5 @@
+# src/app.py
+
 import sys
 import os
 import json
@@ -8,7 +10,7 @@ root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, root_dir)
 
 # Import configuration and required modules
-from src.config import settings 
+from src.config import settings
 from src.pages.data_analysis.compute_metrics import compute_and_save_metrics
 from src.pages.data_analysis.data_analysis import display_data_analysis
 
@@ -19,10 +21,12 @@ page = st.sidebar.selectbox("Go to", ["Home", "Data Analysis", "Model", "Evaluat
 # Display page based on selection
 if page == "Home":
     st.title("Welcome to the Data Analysis App")
-    st.write("""
-    This app allows you to analyze data, build models, and evaluate results.
-    Select an option from the sidebar to get started.
-    """)
+    st.write(
+        """
+        This app allows you to analyze data, build models, and evaluate results.
+        Select an option from the sidebar to get started.
+        """
+    )
 
     # Check if metrics.json exists, and compute metrics if not present
     metrics_path = settings.METRICS_PATH
@@ -34,10 +38,10 @@ if page == "Home":
         # Load existing metrics
         with open(metrics_path, 'r') as f:
             metrics = json.load(f)
-    
+
     # Button to recompute metrics
     if st.button("Recompute Metrics"):
-        metrics = compute_and_save_metrics(settings.TRAIN_LABELS_PATH)
+        metrics = compute_and_save_metrics()
         st.success("Metrics recomputed successfully.")
 
 elif page == "Data Analysis":

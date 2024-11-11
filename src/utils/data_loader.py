@@ -1,3 +1,5 @@
+# src/utils/data_loader.py
+
 import os
 import json
 import pandas as pd
@@ -7,10 +9,10 @@ from src.config.settings import METRICS_PATH
 def load_json_data(path):
     """
     Load JSON data from a specified path.
-    
+
     Parameters:
         path (str): Path to the JSON file.
-    
+
     Returns:
         list or dict: Parsed JSON data.
     """
@@ -19,16 +21,21 @@ def load_json_data(path):
     return data
 
 def load_metrics():
-    """Load precomputed metrics from metrics.json."""
+    """
+    Load precomputed metrics from metrics.json.
+
+    Returns:
+        dict: Metrics data loaded from metrics.json.
+    """
     return load_json_data(METRICS_PATH)
 
 def load_csv_data(path):
     """
     Load CSV data from a specified path.
-    
+
     Parameters:
         path (str): Path to the CSV file.
-    
+
     Returns:
         pandas.DataFrame: Loaded data as a DataFrame.
     """
@@ -37,10 +44,10 @@ def load_csv_data(path):
 def load_image_filenames(path):
     """
     Load image filenames from a given directory.
-    
+
     Parameters:
         path (str): Directory path where images are stored.
-    
+
     Returns:
         list: List of image filenames with extensions like .jpg or .png.
     """
@@ -49,12 +56,12 @@ def load_image_filenames(path):
 def get_file_size_in_mb(file_path):
     """
     Calculate the size of a file in megabytes.
-    
+
     Parameters:
         file_path (str): Path to the file.
-    
+
     Returns:
-        float: File size in MB.
+        float: File size in MB, or None if the file doesn't exist.
     """
     if os.path.exists(file_path):
         return os.path.getsize(file_path) / (1024 * 1024)
@@ -63,10 +70,10 @@ def get_file_size_in_mb(file_path):
 def get_num_images(folder_path):
     """
     Count the number of images in a given directory.
-    
+
     Parameters:
         folder_path (str): Directory path where images are stored.
-    
+
     Returns:
         int: Number of images in the directory.
     """
@@ -75,12 +82,13 @@ def get_num_images(folder_path):
 def get_image_sample_details(folder_path):
     """
     Get resolution, bit depth, and format of a sample image from the directory.
-    
+
     Parameters:
         folder_path (str): Directory path where images are stored.
-    
+
     Returns:
-        dict: Dictionary with resolution, bit depth, and format of a sample image.
+        dict: Dictionary with resolution, bit depth, and format of a sample image,
+              or default values if no images are found.
     """
     for filename in load_image_filenames(folder_path):
         image_path = os.path.join(folder_path, filename)

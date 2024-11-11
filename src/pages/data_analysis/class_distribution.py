@@ -6,6 +6,10 @@ import matplotlib.pyplot as plt
 from src.utils.data_loader import load_metrics
 
 def display_class_distribution():
+    """
+    Display the class distribution analysis for the selected dataset subset
+    (Train or Validation) along with visualizations.
+    """
     st.subheader("Class Distribution")
     
     # Load precomputed metrics from metrics.json
