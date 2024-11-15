@@ -13,18 +13,20 @@ sys.path.insert(0, root_dir)
 from src.config import settings
 from src.pages.data_analysis.compute_metrics import compute_and_save_metrics
 from src.pages.data_analysis.data_analysis import display_data_analysis
+from src.pages.model.display_model_details import display_model_details
+from src.pages.documentation.document_details import display_documentation
+
 
 # Sidebar for navigation
 st.sidebar.title("Navigation")
-page = st.sidebar.selectbox("Go to", ["Home", "Data Analysis", "Model", "Evaluation and Visualization"])
+page = st.sidebar.selectbox("Go to", ["Home", "Data Analysis", "Model","Documentation"])
 
 # Display page based on selection
 if page == "Home":
-    st.title("Welcome to the Data Analysis App")
+    st.title("Bosch Applied CV Coding Assignment")
     st.write(
         """
-        This app allows you to analyze data, build models, and evaluate results.
-        Select an option from the sidebar to get started.
+        To selectively view different aspects of the solution of assignment.
         """
     )
 
@@ -50,8 +52,9 @@ elif page == "Data Analysis":
 
 elif page == "Model":
     st.title("Model Page")
-    st.write("Model training and evaluation coming soon.")
+    display_model_details()
+    
+elif page == "Documentation":
+    st.title("Documentation")
+    display_documentation()
 
-elif page == "Evaluation and Visualization":
-    st.title("Evaluation and Visualization Page")
-    st.write("Evaluation metrics and visualizations coming soon.")
