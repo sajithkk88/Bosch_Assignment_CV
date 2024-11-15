@@ -42,7 +42,7 @@ def display_model_details():
         result_dir = os.path.join("src", "pages", "model", "yolov5")
       
         # List of result images to display
-        images = ["yolov5_performance.PNG","YOLOv5-architecture.PNG"]
+        images = ["performance.png","architecture.png"]
 
         # Display each image if it exists in the specified directory
         for image in images:

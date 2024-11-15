@@ -2,7 +2,7 @@
 
 import os
 
-def create_bdd100k_yaml(file_path="src/pages/model/yolov5/data/bdd100k.yaml"):
+def create_bdd100k_yaml(file_path="/data/bdd100k.yaml"):
     # Define YAML content
     yaml_content = """train: data/images/train  # Path to training images
 val: data/images/val      # Path to validation images

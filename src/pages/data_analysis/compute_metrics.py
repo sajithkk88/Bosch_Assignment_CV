@@ -5,6 +5,7 @@ import json
 from collections import Counter, defaultdict
 from PIL import Image
 import numpy as np
+
 from src.config.settings import (
     TRAIN_LABELS_PATH,
     VAL_LABELS_PATH,

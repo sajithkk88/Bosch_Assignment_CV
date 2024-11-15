@@ -1,13 +1,13 @@
 import json
 import os
-import sys
 from PIL import Image
 
-# Add the root directory to sys.path to allow importing from src as a module
-root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../../'))
-sys.path.insert(0, root_dir)
 
-from src.config.settings import DATA_PATH
+# Base data path
+DATA_PATH = 'C:/Users/sajit/Documents/Bosch_Assignment_CV/data/assignment_data_bdd'
+#DATA_PATH = os.getenv('DATA_PATH', '/data')  # '/data' is a default path in case the environment variable is not set, to use data path with docker image 
+                                            # it should have folders bdd100k_labels_release and bdd100k_images_100k
+
 
 # Construct the complete paths
 train_annotations_path = os.path.join(DATA_PATH, 'bdd100k_labels_release', 'bdd100k', 'labels', 'bdd100k_labels_images_train.json')
@@ -17,8 +17,8 @@ val_images_dir = os.path.join(DATA_PATH, 'bdd100k_images_100k', 'bdd100k', 'imag
 
 
 # YOLOv5 data directory to save converted labels
-output_train_labels_dir = './src/pages/model/yolov5/data/labels/train'
-output_val_labels_dir = './src/pages/model/yolov5/data/labels/val'
+output_train_labels_dir = './data/labels/train'
+output_val_labels_dir = './data/labels/val'
 
 # Make sure output directories exist
 os.makedirs(output_train_labels_dir, exist_ok=True)

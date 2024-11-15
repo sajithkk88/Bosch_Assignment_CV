@@ -23,12 +23,35 @@ page = st.sidebar.selectbox("Go to", ["Home", "Data Analysis", "Model","Document
 
 # Display page based on selection
 if page == "Home":
-    st.title("Bosch Applied CV Coding Assignment")
-    st.write(
-        """
-        To selectively view different aspects of the solution of assignment.
-        """
-    )
+    """
+    Display the Home Page with an introduction to the assignment solution.
+    """
+
+    st.title("Bosch Computer Vision Assignment")
+    st.markdown("""
+    ### Welcome to the Solution Portal
+    This application is designed to provide an interactive overview of the Bosch Computer Vision assignment solution. 
+    The features of this app include:
+    - **Data Analysis**: Explore insights, visualizations, and summaries of the BDD100K dataset used for training.
+    - **Model Training and Evaluation**: Detailed results and metrics from the YOLOv5 model retraining.
+    - **Documentation**: Comprehensive details of the solution approach, methodologies, and improvements.
+
+    ---
+    
+    #### How to Navigate
+    Use the sidebar to explore:
+    - **Data Analysis**: Dive into dataset characteristics, class distributions, and bounding box analyses.
+    - **Model Details**: View training parameters, architecture, and performance metrics.
+    - **Documentation**: Understand the solution's thought process, methodologies, and suggestions for improvement.
+
+    ---
+    #### About the Solution
+    - **Dataset**: The BDD100K dataset, tailored for autonomous driving research.
+    - **Model**: YOLOv5 architecture, fine-tuned for object detection.
+    - **Tools**: Python, Streamlit, Docker, and other state-of-the-art libraries and frameworks.
+
+    Explore the app to gain insights into the entire workflow, from data preprocessing to model evaluation.
+    """)
 
     # Check if metrics.json exists, and compute metrics if not present
     metrics_path = settings.METRICS_PATH
@@ -40,11 +63,6 @@ if page == "Home":
         # Load existing metrics
         with open(metrics_path, 'r') as f:
             metrics = json.load(f)
-
-    # Button to recompute metrics
-    if st.button("Recompute Metrics"):
-        metrics = compute_and_save_metrics()
-        st.success("Metrics recomputed successfully.")
 
 elif page == "Data Analysis":
     st.title("Data Analysis Page")
